@@ -8,29 +8,48 @@ import {
   PaymentStepPage,
 } from "../page/index.ts";
 
-const menuContentPage = new MenuContentPage();
-const productsListPage = new ProductsListPage();
-const shoppingCartPage = new ShoppingCartPage();
-const loginPage = new LoginPage();
-const addressStepPage = new AddressStepPage();
-const shippingStepPage = new ShippingStepPage();
-const paymentStepPage = new PaymentStepPage();
+describe("the user navigates to the dresses page should", () => {
+  let menuContentPage: MenuContentPage;
+  let productsListPage: ProductsListPage;
+  let shoppingCartPage: ShoppingCartPage;
+  let loginPage: LoginPage;
+  let addressStepPage: AddressStepPage;
+  let shippingStepPage: ShippingStepPage;
+  let paymentStepPage: PaymentStepPage;
 
-describe("Buy a t-shirt", () => {
+  before(() => {
+    menuContentPage = new MenuContentPage();
+    productsListPage = new ProductsListPage();
+    shoppingCartPage = new ShoppingCartPage();
+    loginPage = new LoginPage();
+    addressStepPage = new AddressStepPage();
+    shippingStepPage = new ShippingStepPage();
+    paymentStepPage = new PaymentStepPage();
+  });
+
   it("then should be bought a t-shirt", () => {
+    //Arrange
+    let emailForLogin = "aperdomobo@gmail.com";
+    let passwordForLogin = "WorkshopProtractor";
+    let orderCompleteMessage = "Your order on My Store is complete.";
+
+    //Action
     menuContentPage.visitMenuContentPage();
     menuContentPage.goToTShirtMenu();
     productsListPage.addItemToCart();
     shoppingCartPage.checkoutItemInCart();
     shoppingCartPage.checkoutItemInSummary();
-    loginPage.fillOutEmail();
-    loginPage.fillOutPassword();
+    loginPage.fillOutEmail(emailForLogin);
+    loginPage.fillOutPassword(passwordForLogin);
     loginPage.signIn();
     addressStepPage.checkoutItemInAddress();
     shippingStepPage.agreeWithTerms();
     shippingStepPage.checkoutItemInShipping();
     paymentStepPage.selectPayByBankWire();
     paymentStepPage.confirmOrder();
-    paymentStepPage.checkOrderComplete();
+
+    //Assert
+    paymentStepPage.checkOrderComplete(orderCompleteMessage);
   });
 });
+

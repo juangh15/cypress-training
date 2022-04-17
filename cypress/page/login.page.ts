@@ -8,21 +8,18 @@ class LoginPage {
         this.emailField = "#email";
         this.passwordField = "#passwd";
         this.signInButton = "#SubmitLogin > span";
-        this.emailForTesting = "aperdomobo@gmail.com";
-        this.passwordForTesting = "WorkshopProtractor";
     }
 
-    public fillOutEmail(): void {
-        cy.get(this.emailField).type(this.emailForTesting);
+    public fillOutEmail(emailForTesting: string): void {
+        cy.get(this.emailField).type(emailForTesting);
     }
 
-    public fillOutPassword(): void {
-        cy.get(this.passwordField).type(this.passwordForTesting);
+    public fillOutPassword(passwordForTesting: string): void {
+        cy.get(this.passwordField).type(passwordForTesting);
     }
 
     public signIn(): void {
         cy.get(this.signInButton).click();
     }
-
 }
 export { LoginPage }

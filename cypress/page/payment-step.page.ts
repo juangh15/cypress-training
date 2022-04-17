@@ -1,13 +1,12 @@
 class PaymentStepPage {
     private payByBankWireButton: string;
     private confirmOrderButton: string;
-    private orderCompleteText: string;
+    private orderCompleteParagraph: string;
 
     constructor() {
         this.payByBankWireButton = ".payment_module > .bankwire > span";
         this.confirmOrderButton = ".cart_navigation.clearfix > button > span";
         this.orderCompleteParagraph = "#center_column > div > p > strong";
-        this.orderCompleteMessage = "Your order on My Store is complete.";
     }
 
     public selectPayByBankWire(): void {
@@ -18,9 +17,9 @@ class PaymentStepPage {
         cy.get(this.confirmOrderButton).click();
     }
 
-    public checkOrderComplete(): void {
+    public checkOrderComplete(orderCompleteMessage: string): void {
         cy.get(this.orderCompleteParagraph)
-        .should("have.text", this.orderCompleteMessage);
+        .should("have.text", orderCompleteMessage);
     }
 
 }
