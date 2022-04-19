@@ -28,13 +28,13 @@ describe("the user navigates to the dresses page should", () => {
   });
 
   it("then should be bought a t-shirt", () => {
-    //Arrange
-    let emailForLogin = "aperdomobo@gmail.com";
-    let passwordForLogin = "WorkshopProtractor";
-    let orderCompleteMessage = "Your order on My Store is complete.";
-
-    //Action
+    // Arrange
+    const emailForLogin = "aperdomobo@gmail.com";
+    const passwordForLogin = "WorkshopProtractor";
+    const orderCompleteMessage = "Your order on My Store is complete.";
     menuContentPage.visitMenuContentPage();
+
+    // Action
     menuContentPage.goToTShirtMenu();
     productsListPage.addItemToCart();
     shoppingCartPage.checkoutItemInCart();
@@ -48,8 +48,7 @@ describe("the user navigates to the dresses page should", () => {
     paymentStepPage.selectPayByBankWire();
     paymentStepPage.confirmOrder();
 
-    //Assert
+    // Assert
     paymentStepPage.checkOrderComplete(orderCompleteMessage);
   });
 });
-

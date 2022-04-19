@@ -1,6 +1,6 @@
-import { 
-  MenuContentPage, 
-  DressesListPage 
+import {
+  MenuContentPage,
+  DressesListPage,
 } from "../page/index.ts";
 
 describe("the user navigates to the dresses page should", () => {
@@ -14,20 +14,20 @@ describe("the user navigates to the dresses page should", () => {
 
   it("show the available dresses", () => {
     // Arrange
-    let expectedNumberOfDresses = 5;
-    let expectedDressNames: string[] = [
-      'Printed Dress', 
-      'Printed Dress', 
-      'Printed Summer Dress', 
-      'Printed Summer Dress', 
-      'Printed Chiffon Dress'
+    const expectedNumberOfDresses = 5;
+    const expectedDressNames: string[] = [
+      "Printed Dress",
+      "Printed Dress",
+      "Printed Summer Dress",
+      "Printed Summer Dress",
+      "Printed Chiffon Dress",
     ];
-
-    //Action
     menuContentPage.visitMenuContentPage();
+
+    // Action
     menuContentPage.goToDressesMenu();
 
-    //Assert
+    // Assert
     dressesListPage.validateItemsNumber(expectedNumberOfDresses);
     dressesListPage.validateItemsNames(expectedDressNames);
   });
